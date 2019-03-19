@@ -13,23 +13,23 @@ class ViewController: UIViewController, MonthViewDelegate {
         print(monthIndex)
     }
     
-
+    
     //MARK:- Outlets
     @IBOutlet weak var colWeekDays: UICollectionView!
-    
     
     //MARK:- Variables
     let arrWeekDays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
     var arrWeekDates : [String] = []
-     let today = Date()
+    let today = Date()
     let dateFormater = DateFormatter()
     var currentDay = ""
-
-    let calenderView: CalenderView = {
-        let v = CalenderView()
-        v.translatesAutoresizingMaskIntoConstraints=false
-        return v
-    }()
+    
+    //    let calenderView: CalenderView = {
+    //        let v = CalenderView()
+    //        v.translatesAutoresizingMaskIntoConstraints=false
+    //        return v
+    //    }()
+    @IBOutlet weak var calenderView: CalendarView!
     
     let month = MonthView()
     
@@ -59,10 +59,10 @@ class ViewController: UIViewController, MonthViewDelegate {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        calenderView.colMonthDate.collectionViewLayout.invalidateLayout()
+        calenderView.myCollectionView.collectionViewLayout.invalidateLayout()
     }
     
-   
+    
     
     //MARK:- Get Current Week
     func getCurrentWeek() {
@@ -73,14 +73,12 @@ class ViewController: UIViewController, MonthViewDelegate {
             let weekdays = calendar.range(of: .weekday, in: .weekOfYear, for: self.today)!
             let days = (weekdays.lowerBound ..< weekdays.upperBound)
                 .compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: self.today) }
-           
             
             for day in days {
                 
                 let aDay = self.getDayFromDate(day)
                 self.arrWeekDates.append(aDay)
             }
-            
             
             DispatchQueue.main.async {
                 print(self.arrWeekDates)

@@ -33,7 +33,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFH-Vf-xqB">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFH-Vf-xqB">
                                 <rect key="frame" x="0.0" y="64" width="375" height="100"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aJC-rG-cfT">
@@ -110,17 +110,36 @@
                                     <constraint firstAttribute="bottom" secondItem="Jc4-rT-eNE" secondAttribute="bottom" id="g8i-gV-XjU"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y56-VV-P8v" customClass="CalendarView" customModule="CalendarAgenda" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="164" width="375" height="343"/>
+                                <color key="backgroundColor" red="0.4823529412" green="0.67843137249999996" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="343" id="uta-KP-aFx"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="monthViewLblColor">
+                                        <color key="value" red="0.86666666670000003" green="0.031372549020000001" blue="0.0078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="monthBackground">
+                                        <color key="value" red="0.99705451730000005" green="0.97996543359999999" blue="0.058632134900000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="y56-VV-P8v" firstAttribute="top" secondItem="XFH-Vf-xqB" secondAttribute="bottom" id="2YT-BY-1Ix"/>
                             <constraint firstItem="XFH-Vf-xqB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="C8Y-KQ-V3L"/>
+                            <constraint firstItem="y56-VV-P8v" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ccv-OU-eaB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XFH-Vf-xqB" secondAttribute="trailing" id="aZY-h3-X11"/>
                             <constraint firstItem="XFH-Vf-xqB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bId-FF-QOI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="y56-VV-P8v" secondAttribute="trailing" id="tM8-mf-86K"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="D5I-Eb-oT0"/>
                     <connections>
+                        <outlet property="calenderView" destination="y56-VV-P8v" id="xU6-ds-yLF"/>
                         <outlet property="colWeekDays" destination="aJC-rG-cfT" id="bck-9b-YPN"/>
                     </connections>
                 </viewController>
